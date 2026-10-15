@@ -3,17 +3,22 @@ using System.IO;
 
 public class Todo
 {
-    private string _arquivo = "list.txt";
-    private string _content; 
+    private string _caminho = "list.txt";
+    private string[] _content; 
 
     public Todo()
     {
-        _content = File.ReadAllText(_arquivo);
+        _content = File.ReadAllLines(_caminho);
     }
 
-    public string MostrarTarefas()
+    public string[] MostrarTarefas()
     {
         return _content;
+    }
+
+    public void AddTarefa(string tarefa)
+    {
+        File.AppendAllText(_caminho, $"[ ] - {tarefa}\n");
     }
     
     
